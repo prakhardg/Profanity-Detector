@@ -1,7 +1,8 @@
 package toppr;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -17,6 +18,7 @@ public class ProfaneDictionaryService {
     Stemmer stemmer = new Stemmer();
     static ProfaneDictionaryService profaneDictionaryService ;
     private final  Map<String , String> profaneStemmed  = new HashMap<>();
+     private File dir;
     
     private ProfaneDictionaryService() {}               // Empty constructor of private access type ensuring non creation of class profaneDictObject outsidtionaryServiceclass
     
@@ -35,8 +37,8 @@ public class ProfaneDictionaryService {
     }
     
     private void listInitializer()throws Exception{
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(ProfaneDictionaryService.class.
-                getResourceAsStream("profane_words.txt"),"UTF-8")) /// Filepath is provided.
+        dir = new File("src/toppr/profane_words.txt");
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(dir)) /// Filepath is provided.
         ) {
             String currentLine;
             while((currentLine = bufferedReader.readLine())!= null)        //Creating Hashmap
