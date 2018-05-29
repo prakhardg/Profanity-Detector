@@ -18,7 +18,7 @@ public class ProfaneDictionaryService {
     Stemmer stemmer = new Stemmer();
     static ProfaneDictionaryService profaneDictionaryService ;
     private final  Map<String , String> profaneStemmed  = new HashMap<>();
-     private File filedir;
+    private File dir;
     
     private ProfaneDictionaryService() {}               // Empty constructor of private access type ensuring non creation of class profaneDictObject outsidtionaryServiceclass
     
@@ -37,8 +37,9 @@ public class ProfaneDictionaryService {
     }
     
     private void listInitializer()throws Exception{
-        filedir = new File("src/toppr/profane_words.txt");
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filedir)) /// Filepath is provided.
+//        String classpathstr = System.get
+        dir = new File("src/toppr/profane_words.txt");
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(dir)) /// Filepath is provided.
         ) {
             String currentLine;
             while((currentLine = bufferedReader.readLine())!= null)        //Creating Hashmap
